@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+  --bg-base:     #080a0f;
+  --bg-surface:  #0f1118;
+  --bg-elevated: #161923;
+  --bg-hover:    #1e2235;
+  --border:      #252839;
+  --border-sub:  #1a1d2e;
+
+  --accent:       #6366f1;
+  --accent-light: #818cf8;
+  --accent-muted: rgba(99,102,241,.14);
+
+  --success: #22c55e;
+  --danger:  #ef4444;
+  --warn:    #f59e0b;
+
+  --text-1: #eef0ff;
+  --text-2: #8b8fa8;
+  --text-3: #4b4f6a;
+
+  --text-primary:   #eef0ff;
+  --text-secondary: #8b8fa8;
+  --text-muted:     #4b4f6a;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  min-height: 100vh;
+  background: var(--bg-base);
+  color: var(--text-1);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar        { width:5px; height:5px; }
+::-webkit-scrollbar-track  { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb  { background: var(--border); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes fadeIn  { from{opacity:0;transform:translateY(8px)}  to{opacity:1;transform:translateY(0)} }
+@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulseRing {
+  0%  { box-shadow: 0 0 0 0 rgba(99,102,241,.4); }
+  70% { box-shadow: 0 0 0 12px rgba(99,102,241,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-fade-in   { animation: fadeIn  .35s ease both; }
+.animate-slide-up  { animation: slideUp .4s  ease both; }
+.animate-pulse-ring{ animation: pulseRing 2s infinite; }
+
+/* ─── Utility Classes ────────────────────────────────────────── */
+
+/* Glass panels */
+.glass {
+  background: rgba(22, 25, 35, .88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 32px rgba(0,0,0,.35);
+}
+
+/* Auth card — deliberately more opaque so it pops on the dark page */
+.auth-card {
+  background: #161923;
+  border: 1px solid #252839;
+  box-shadow: 0 12px 48px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+}
+
+/* Input */
+.field {
+  width: 100%;
+  background: #0f1118;
+  border: 1px solid #252839;
+  border-radius: .75rem;
+  color: var(--text-1);
+  font-size: .875rem;
+  padding: .625rem 1rem;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field::placeholder { color: var(--text-3); }
+.field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99,102,241,.18);
+}
+.field.has-icon { padding-left: 2.375rem; }
+.field.error-state { border-color: rgba(239,68,68,.6); }
+
+/* Btn primary */
+.btn-primary {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 600;
+  padding: .65rem 1.25rem;
+  border-radius: .75rem;
+  border: none;
+  cursor: pointer;
+  transition: background .15s, transform .1s, box-shadow .15s;
+  box-shadow: 0 4px 18px rgba(99,102,241,.3);
+}
+.btn-primary:hover  { background: #7c7ffc; box-shadow: 0 6px 24px rgba(99,102,241,.4); }
+.btn-primary:active { transform: scale(.97); }
+.btn-primary:disabled { opacity:.55; cursor:not-allowed; }
+
+/* Surface tiles */
+.surface {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
