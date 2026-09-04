@@ -1,6 +1,8 @@
 # Confera 🎥
 
 > A modern, full-stack, real-time video conferencing platform built with WebRTC.
+>
+> 📖 **[View Technologies & Frameworks Guide (TECH_STACK.md)](./TECH_STACK.md)**
 
 Confera is a Jitsi/Google Meet-inspired video conferencing application that enables users to create and join virtual meeting rooms, communicate through real-time audio/video, share their screens, exchange messages, and collaborate with other participants.
 
